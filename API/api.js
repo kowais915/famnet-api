@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // database and listening
-app.listen(PORT, ()=>{
+app.listen(process.env.PORTAPI || 3000, ()=>{
     console.log("Lsitening to request at port 3000");
 });
 
