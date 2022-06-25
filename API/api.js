@@ -51,10 +51,18 @@ getFmilyPlanning()
 // ROUTING STARTS
 //docs page
 
-app.get("/", (req, res)=>{
+app.get("/docs", (req, res)=>{
 
     // res.json({msg: "Welcome to the famnet documentation page for its API"})
     res.render("docs")
+})
+
+app.get("/", (req, res)=>{
+
+    res.json(
+        {msg: "Welcome to the famnet documentation page for its API",
+        documentation: " https://famnet-api.herokuapp.com/docs"})
+    
 })
 
 
