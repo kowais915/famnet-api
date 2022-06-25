@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node api.js"
+    "start": "next start -p $PORT"
   },
   "repository": {
     "type": "git",
