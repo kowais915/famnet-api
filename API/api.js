@@ -3,6 +3,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cheerio = require("cheerio");
 const axios = require("axios");
+const womenHealth = require("./dataSources/womenHealth");
+const pregnancySource = require("./dataSources/pregnancy");
+const {getHealthContent} = require("./functions/functions")
+const functions = require("./functions/functions");
 PORT = process.env.PORTAPI || 3000;
 
 
@@ -14,65 +18,9 @@ app.listen(PORT, ()=>{
     console.log("Lsitening to request at port 3000");
 });
 
-// health sources
-const heatlhSources = [
-{
-    source: "nbcNews",
-    url: "https://www.nbcnews.com/health/womens-health",
-    base: "https://www.nbcnews.com"
-},
-{
-    source: "theguardian",
-    url: "https://www.theguardian.com/lifeandstyle/women",
-
-}
-
-];
-
-//pregnencies issues
-let pregSources = [];
-
-//array for storing  health content and then rendering upon request
-let healthArray = [];
-
-//array to store content form a certain source
-let singleSourceArray = [];
 
 
-
-//code to get health related content
-//health related content save in health Array
-const getHealthContent = async ()=>{
-    heatlhSources.forEach(source=>{
-    
-        axios.get(source.url)
-        .then(dataReturned=>{
-            const body = dataReturned.data;
-            const $ = cheerio.load(body);
-            $("a:contains('women')").each(function (){
-                const title = $(this).text();
-    
-                const url = $(this).attr('href');
-               
-                healthArray.push({
-                    title,
-                    url,
-                    source: source.source
-    
-                })
-    
-    
-            })
-           
-            
-        })
-    
-    //forEach ends here    
-      })
-    
-}
-
-
+// FUNCTIONS
 //this function goes out and fetches health stuff
 getHealthContent()
 .then(val=>{
@@ -80,7 +28,6 @@ getHealthContent()
 })
 
 
-//code to pull health related stuff ends here
 
 
 
@@ -118,42 +65,17 @@ app.get("/api/:source", (req, res)=>{
 //this end-point returns latest info about women's health
 app.get("/health", (req, res)=>{
   
-    res.json(healthArray);
+    res.json(functions.healthArray);
     
  
 })
-    // heatlhSources.forEach(val=>{
-    //     let health_source = val.source;
-    //     axios.get(val.url)
-    //     .then(dataReturned=>{
-    //         const body = dataReturned.data;
-    //         const $ = cheerio.load(body);
-    //         $("a:contains('women')").each(function (){
-    //             const title = $(this).text();
 
-    //             const url = $(this).attr('href');
-                
-    //             healthArray.push({
-    //                 title,
-    //                 url, 
-    //                 health_source
-    //             })
-    //         })
-    //         // console.log(healthArray)
-            
-    //         res.json(healthArray.reverse());
-            
-    //     })
-        
-    // })
-
+//this end-point pregnany related content
+//this end-point returns latest info about women's health
+app.get("/pregnancy", (req, res)=>{
+  
+    res.json(pregArry);
     
-
-
-//
-
-
-//invalid endpoint
-// app.use((req, res)=>{
-//     res.status(404).json({msg: "Invalid endpoint. Please cosult the documentation page"})
-// )}
+ 
+})
+    
