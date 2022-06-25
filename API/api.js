@@ -13,6 +13,11 @@ PORT = process.env.PORTAPI || 3000;
 //express app
 const app = express();
 
+//middleware
+app.set("view engine", "ejs");
+app.use(express.json());
+app.use(express.static('public'));
+
 // database and listening
 app.listen(PORT, ()=>{
     console.log("Lsitening to request at port 3000");
@@ -48,7 +53,8 @@ getFmilyPlanning()
 
 app.get("/", (req, res)=>{
 
-    res.json({msg: "Welcome to the famnet documentation page for its API"})
+    // res.json({msg: "Welcome to the famnet documentation page for its API"})
+    res.render("docs")
 })
 
 

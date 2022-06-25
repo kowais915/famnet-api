@@ -60,13 +60,13 @@ const getHealthContent = async ()=>{
 
 const getPregContent = async ()=>{
 
-    familySources.forEach(source =>{
+    pregSources.forEach(source =>{
         console.log(source);
         axios.get(source.url)
         .then(resp =>{
             const body = resp.data;
             const $ = cheerio.load(body);
-            $("a").each(function (){
+            $("a:contains('pregnancy')").each(function (){
                 const title = $(this).text();
 
                 const url = $(this).attr("href");

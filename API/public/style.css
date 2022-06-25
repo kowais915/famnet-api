@@ -1,0 +1,18 @@
+body{
+    background-color: black;
+    color: white;
+    width: 900px;
+    margin: 40px auto;
+
+}
+
+#collapseOne > div{
+    color: black;
+}
+
+#collapseTwo > div{
+    color: black;
+}
+#collapse3 > div{
+    color: black;
+}
