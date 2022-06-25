@@ -5,7 +5,7 @@ const cheerio = require("cheerio");
 const axios = require("axios");
 const womenHealth = require("./dataSources/womenHealth");
 const pregnancySource = require("./dataSources/pregnancy");
-const {getHealthContent} = require("./functions/functions")
+const {getHealthContent, getPregContent, getFmilyPlanning} = require("./functions/functions")
 const functions = require("./functions/functions");
 PORT = process.env.PORTAPI || 3000;
 
@@ -27,6 +27,18 @@ getHealthContent()
     console.log("Health Content Fetched. Success!")
 })
 
+//pregnancy function
+getPregContent()
+.then(val=>{
+    console.log("Pregnancy data fetched. Success!");
+})
+
+
+//family planning
+getFmilyPlanning()
+.then(result=>{
+    console.log("Family Planning content fetched. Success!")
+})
 
 
 
@@ -74,8 +86,17 @@ app.get("/health", (req, res)=>{
 //this end-point returns latest info about women's health
 app.get("/pregnancy", (req, res)=>{
   
-    res.json(pregArry);
+    res.json(functions.pregArry);
     
  
 })
+
+//this end-point returns birth control content
+app.get("/birth", (req, res)=>{
+  
+    res.json(functions.birthArray.reverse());
+    
+ 
+})
+
     

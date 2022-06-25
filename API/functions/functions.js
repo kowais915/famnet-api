@@ -1,6 +1,8 @@
 const womenHealthSources = require("../dataSources/womenHealth");
+const pregSources = require("../dataSources/pregnancy");
 const axios = require("axios");
 const cheerio = require("cheerio");
+const familySources  = require("../dataSources/familyPlanningSources");
 
 //DATA STORAGE IN ARRAYS
 
@@ -12,6 +14,11 @@ let familyPlanning = [];
 
 //array for storing  health content and then rendering upon request
 let healthArray = [];
+
+
+//array for storing  birth control ontent and then rendering upon request
+let birthArray = [];
+
 
 //array to store content form a certain source
 let singleSourceArray = [];
@@ -51,13 +58,66 @@ const getHealthContent = async ()=>{
 
 //function to get pregnancy related content
 
-const getPregContent = ()=>{
+const getPregContent = async ()=>{
 
+    familySources.forEach(source =>{
+        console.log(source);
+        axios.get(source.url)
+        .then(resp =>{
+            const body = resp.data;
+            const $ = cheerio.load(body);
+            $("a").each(function (){
+                const title = $(this).text();
+
+                const url = $(this).attr("href");
+                // const url = source.base + url1;
+                
+                pregArry.push({
+                    title,
+                    url,
+                    source: source.source
+                });
+                pregArry.reverse();
+            })
+        } )
+    })
+
+}
+
+//family planning content
+
+const getFmilyPlanning = async () =>{
+
+    familySources.forEach(source =>{
+        console.log(source);
+        axios.get(source.url)
+        .then(resp =>{
+            const body = resp.data;
+            const $ = cheerio.load(body);
+            $("a:contains('birth')").each(function (){
+                const title = $(this).text();
+
+                const url = $(this).attr("href");
+                // const url = source.base + url1;
+                
+                birthArray.push({
+                    title,
+                    url,
+                    source: source.source
+                });
+                birthArray.reverse();
+            })
+        } )
+    })
+    
 }
 
 module.exports = {
     getHealthContent,
     getPregContent,
-    healthArray
+    healthArray,
+    pregArry,
+    birthArray,
+    getFmilyPlanning
 
 }
