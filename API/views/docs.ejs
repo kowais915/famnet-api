@@ -27,43 +27,81 @@
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Accordion Item #1
+            Technology Stack
           </button>
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            This is the first item's accordion body.
+            <ul>
+                <li>Node.js</li>
+                <li>Express.js</li>
+                <li>Cheerio</li>
+                <li>Axios</li>
+                <li>Heroku for Deployment</li>
+            </ul>
           </div>
         </div>
       </div>
       <br>
-      <!-- accordian 2 -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
-            Accordion Item #1
-          </button>
-        </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            This is the first item's accordion body.
-          </div>
-        </div>
-      </div>
-        <br>
-    
-
-
-        <!-- accordian 3 -->
+              <!-- accordian 3 -->
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="true" aria-controls="collapseOne">
-            Accordion Item #1
+            End-points
           </button>
         </h2>
         <div id="collapse3" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            This is the first item's accordion body.
+
+            <ul>
+                <li>
+                Root End-point
+                <pre>
+                    <code>
+                        
+                        https://famnet-api.herokuapp.com
+    
+                    </code>
+                </pre>
+                <p>
+                    This is the root end-point of the api and will lead you to the documentation page.
+                </p>
+                </li>
+                <li>Health End-point
+
+                    <pre>
+                        <code>
+                            https://famnet-api.herokuapp.com/health
+                        </code>
+                    </pre>
+                    <p>This is the <strong>health</strong> end-point. This end-point returns links to blogs and their sources. The following is the complete endpoint.  </p>
+                </li>
+
+                <li>
+                    Birth Control End-point
+                    <pre>
+                        <code>
+                            https://famnet-api.herokuapp.com/birth
+                        </code>
+                    </pre>
+                    <p>This end-point returns articles related to birth control.</p>
+                </li>
+                <li>
+                    Pregnancy End-point
+                    <pre>
+                        <code>
+                            https://famnet-api.herokuapp.com/pregnancy
+                        </code>
+                    </pre>
+                    <p>
+                        This end-point returns content related to pregnancy.
+                    </p>
+                </li>
+
+                
+            </ul>
+            
+          
           </div>
         </div>
       </div>
