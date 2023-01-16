@@ -1,4 +1,4 @@
-Note: This project is not live on heroku anymore.
+Note: The application is not live on Heroku anymore due to changes in their policies for users who are using their free plan. 
 
 # The Famnet API
 This api was created during the Makespace Hachathon.
