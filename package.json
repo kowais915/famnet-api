@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "next start -p $PORT"
+    "start": "node api.js",
+    "build": "echo 'Nothing to build for an Express app'"
   },
   "repository": {
     "type": "git",
