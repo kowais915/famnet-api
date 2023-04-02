@@ -7,7 +7,7 @@ const womenHealth = require("./dataSources/womenHealth");
 const pregnancySource = require("./dataSources/pregnancy");
 const {getHealthContent, getPregContent, getFmilyPlanning} = require("./functions/functions")
 const functions = require("./functions/functions");
-PORT = process.env.PORTAPI || 3000;
+PORT = process.env.PORTAPI || 3002;
 
 
 //express app
@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // database and listening
-app.listen(process.env.PORT|| 3000, ()=>{
+app.listen(process.env.PORT|| 3002, ()=>{
     console.log("Lsitening to request at port 3000");
 });
 
